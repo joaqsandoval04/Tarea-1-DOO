@@ -24,56 +24,53 @@ class Expendedor{
         precio = precioBebidas;
     }
 
-    public Bebida comprarBebida(Moneda m, int type) {
+    public Bebida comprarBebida(Moneda m, int type) throws NoHayProductoException,PagoIncorrectoException,PagoInsuficienteException {
         Bebida b;
         int vuelto;
 
-        if (m == null)
-        {
-            return null;
+        if (m == null) {
+            throw new PagoIncorrectoException("Pago incorrecto: No se ingresó ninguna moneda");
         }
 
         if (m.getValor() >= precio) {
             if (type == COCA) {
                 b = coca.getBebida();
-            } else if (type == SPRITE){
+            }
+            else if (type == SPRITE) {
                 b = sprite.getBebida();
-            }else
-            {
+            }
+            else {
                 vuelto = m.getValor();
                 while (vuelto > 0) {
                     monVu.addMoneda(new Moneda100());
                     vuelto -= 100;
                 }
-                return null;
+                throw new NoHayProductoException("No queda el producto solicitado");
             }
 
             if (b != null) {
-
                 vuelto = m.getValor() - precio;
                 while (vuelto > 0) {
                     monVu.addMoneda(new Moneda100());
                     vuelto -= 100;
                 }
-            }else{
+            }
+            else {
                 vuelto = m.getValor();
                 while (vuelto > 0) {
                     monVu.addMoneda(new Moneda100());
                     vuelto -= 100;
                 }
             }
-
-
             return b;
         }
-        else
-        {
+        else {
             vuelto = m.getValor();
             while (vuelto > 0) {
                 monVu.addMoneda(new Moneda100());
                 vuelto -= 100;
             }
-            return null;
+            throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto");
         }
     }
 
