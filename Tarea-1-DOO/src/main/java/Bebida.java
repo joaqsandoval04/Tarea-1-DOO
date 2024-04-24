@@ -10,5 +10,5 @@ abstract class Bebida extends Producto{
         return serie;
     }
 
-    public abstract String beber();
+    public abstract String consumir();
 }

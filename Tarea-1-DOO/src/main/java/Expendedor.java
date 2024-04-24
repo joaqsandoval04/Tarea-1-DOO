@@ -1,31 +1,64 @@
 class Expendedor{
     private Deposito coca;
     private Deposito sprite;
+
+    private Deposito fanta;
+
+    private Deposito snickers;
+
+    private Deposito super8;
     private Deposito monVu;
     public static final int COCA=1;
     public static final int SPRITE=2;
 
+    public static final int FANTA=3;
+
+    public static final int SNICKERS=4;
+
+    public static final int SUPER8=5;
+
     public int precio;
 
-    public Expendedor(int numBebidas, int precioBebidas){
-        coca = new Deposito();
+    public Expendedor(int numProductos, int precioProductos){
         monVu = new Deposito();
-        for (int i = 0; i < numBebidas; i++){
-            Bebida b = new CocaCola(100+i);
-            coca.addBebida(b);
+
+        coca = new Deposito();
+        for (int i = 0; i < numProductos; i++){
+            Producto p = new CocaCola(100+i);
+            coca.addProducto(p);
         }
 
         sprite = new Deposito();
-        for (int i = 0; i < numBebidas; i++){
-            Bebida b = new Sprite(200+i);
-            sprite.addBebida(b);
+        for (int i = 0; i < numProductos; i++){
+            Producto p = new Sprite(200+i);
+            sprite.addProducto(p);
         }
 
-        precio = precioBebidas;
+        fanta = new Deposito();
+        for (int i = 0; i < numProductos; i++){
+            Producto p = new Fanta(300+i);
+            fanta.addProducto(p);
+        }
+
+        snickers = new Deposito();
+        for (int i = 0; i < numProductos; i++){
+            Producto p = new Snickers(400+i);
+            snickers.addProducto(p);
+        }
+
+        super8 = new Deposito();
+        for (int i = 0; i < numProductos; i++){
+            Producto p = new Super8(500+i);
+            super8.addProducto(p);
+        }
+
+
+
+        precio = precioProductos;
     }
 
-    public Bebida comprarBebida(Moneda m, int type) {
-        Bebida b;
+    public Producto comprarProducto(Moneda m, int type) {
+        Producto p;
         int vuelto;
 
         if (m == null)
@@ -35,11 +68,16 @@ class Expendedor{
 
         if (m.getValor() >= precio) {
             if (type == COCA) {
-                b = coca.getBebida();
+                p = coca.getProducto();
             } else if (type == SPRITE){
-                b = sprite.getBebida();
-            }else
-            {
+                p = sprite.getProducto();
+            }else if (type == FANTA){
+                p = fanta.getProducto();
+            }else if (type ==  SNICKERS){
+                p = snickers.getProducto();
+            }else if (type == SUPER8){
+                p = super8.getProducto();
+            }else{
                 vuelto = m.getValor();
                 while (vuelto > 0) {
                     monVu.addMoneda(new Moneda100());
@@ -48,7 +86,7 @@ class Expendedor{
                 return null;
             }
 
-            if (b != null) {
+            if (p != null) {
 
                 vuelto = m.getValor() - precio;
                 while (vuelto > 0) {
@@ -64,7 +102,7 @@ class Expendedor{
             }
 
 
-            return b;
+            return p;
         }
         else
         {

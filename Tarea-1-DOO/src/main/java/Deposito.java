@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 class Deposito{
-    private ArrayList<Bebida> lista;
+    private ArrayList<Producto> lista;
     private ArrayList<Moneda> monedas;
 
     public Deposito(){
@@ -9,8 +9,8 @@ class Deposito{
         monedas = new ArrayList<>();
     }
 
-    public void addBebida(Bebida b){
-        lista.add(b);
+    public void addProducto(Producto p){
+        lista.add(p);
     }
 
     public void addMoneda(Moneda moneda) {
@@ -23,10 +23,10 @@ class Deposito{
         return monedas.remove(0);
     }
 
-    public Bebida getBebida(){
+    public Producto getProducto(){
         if (lista.size() != 0){
-            Bebida b = lista.remove(0);
-            return b;
+            Producto p = lista.remove(0);
+            return p;
         }else {
             return null;
         }

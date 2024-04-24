@@ -1,0 +1,10 @@
+- En producto se creó el método abstracto "consumir", el cual antes era "beber". Esto es para generalizar entre
+bebidas y dulces.
+- Cambio en nombres de variables en Expendedor, Comprador y Deposito, para así generalizar entre dulces y bebidas.
+- Cambio en tipos de variables en Expendedor, Comprador y Deposito, de Bebida a Producto.
+- Ya que no se ha implementado aún el depósito, por ahora se escogerá el producto de la siguiente manera:
+    - 1. Cocacola
+    - 2. Sprite
+    - 3. Fanta
+    - 4. Snickers
+    - 5. Super8

@@ -3,7 +3,7 @@ class Snickers extends Dulce{
         super(s);
     }
 
-    public String comer(){
+    public String consumir(){
         return "snickers";
     }
 }
