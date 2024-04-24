@@ -1,7 +1,6 @@
-abstract class Bebida extends Producto{
+abstract class Dulce extends Producto{
     private int serie;
-
-    public Bebida(int numSerie){
+    public Dulce(int numSerie){
         super();
         serie = numSerie;
     }
