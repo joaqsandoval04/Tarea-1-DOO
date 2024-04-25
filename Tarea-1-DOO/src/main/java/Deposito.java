@@ -1,32 +1,26 @@
 import java.util.ArrayList;
 
-class Deposito{
-    private ArrayList<Producto> lista;
-    private ArrayList<Moneda> monedas;
+class Deposito<T>{
+    private ArrayList<T> lista;
 
     public Deposito(){
         lista = new ArrayList<>();
-        monedas = new ArrayList<>();
     }
 
-    public void addProducto(Producto p){
+    public void addList(T p){
         lista.add(p);
     }
 
-    public void addMoneda(Moneda moneda) {
-        monedas.add(moneda);
-    }
 
-    public Moneda getMoneda() {
-        if (monedas.isEmpty())
+    public T getMoneda() {
+        if (lista.isEmpty())
             return null;
-        return monedas.remove(0);
+        return lista.removeFirst();
     }
 
-    public Producto getProducto(){
-        if (lista.size() != 0){
-            Producto p = lista.remove(0);
-            return p;
+    public T getProducto(){
+        if (!lista.isEmpty()){
+            return lista.removeFirst();
         }else {
             return null;
         }

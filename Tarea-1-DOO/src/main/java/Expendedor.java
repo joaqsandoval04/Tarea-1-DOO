@@ -1,42 +1,42 @@
 class Expendedor{
-    private Deposito coca;
-    private Deposito sprite;
-    private Deposito fanta;
-    private Deposito snickers;
-    private Deposito super8;
-    private Deposito monVu;
+    private Deposito<Producto> coca;
+    private Deposito<Producto> sprite;
+    private Deposito<Producto> fanta;
+    private Deposito<Producto> snickers;
+    private Deposito<Producto> super8;
+    private Deposito<Moneda> monVu;
     public int precio;
     public Expendedor(int numProductos){
-        monVu = new Deposito();
+        monVu = new Deposito<>();
 
-        coca = new Deposito();
+        coca = new Deposito<>();
         for (int i = 0; i < numProductos; i++){
             Producto p = new CocaCola(100+i);
-            coca.addProducto(p);
+            coca.addList(p);
         }
 
-        sprite = new Deposito();
+        sprite = new Deposito<>();
         for (int i = 0; i < numProductos; i++){
             Producto p = new Sprite(200+i);
-            sprite.addProducto(p);
+            sprite.addList(p);
         }
 
-        fanta = new Deposito();
+        fanta = new Deposito<>();
         for (int i = 0; i < numProductos; i++){
             Producto p = new Fanta(300+i);
-            fanta.addProducto(p);
+            fanta.addList(p);
         }
 
-        snickers = new Deposito();
+        snickers = new Deposito<>();
         for (int i = 0; i < numProductos; i++){
             Producto p = new Snickers(400+i);
-            snickers.addProducto(p);
+            snickers.addList(p);
         }
 
-        super8 = new Deposito();
+        super8 = new Deposito<>();
         for (int i = 0; i < numProductos; i++){
             Producto p = new Super8(500+i);
-            super8.addProducto(p);
+            super8.addList(p);
         }
     }
     public Producto comprarProducto(Moneda m, int type) throws NoHayProductoException,PagoIncorrectoException,PagoInsuficienteException {
@@ -63,14 +63,14 @@ class Expendedor{
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     return p;
                 } else {
                     vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto");
@@ -84,14 +84,14 @@ class Expendedor{
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     return p;
                 } else {
                     vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto");
@@ -105,14 +105,14 @@ class Expendedor{
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     return p;
                 } else {
                     vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto");
@@ -126,14 +126,14 @@ class Expendedor{
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     return p;
                 } else {
                     vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto");
@@ -147,14 +147,14 @@ class Expendedor{
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     return p;
                 } else {
                     vuelto = m.getValor();
                     while (vuelto > 0) {
-                        monVu.addMoneda(new Moneda100());
+                        monVu.addList(new Moneda100());
                         vuelto -= 100;
                     }
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto");
@@ -163,14 +163,13 @@ class Expendedor{
             default:
                 vuelto = m.getValor();
                 while (vuelto > 0) {
-                    monVu.addMoneda(new Moneda100());
+                    monVu.addList(new Moneda100());
                     vuelto -= 100;
                 }
                 throw new NoHayProductoException("No existe el producto solicitado");
         }
     }
-
-       public Moneda getVuelto(){
-           return monVu.getMoneda();
-       }
+    public Moneda getVuelto(){
+        return monVu.getMoneda();
+    }
 }
