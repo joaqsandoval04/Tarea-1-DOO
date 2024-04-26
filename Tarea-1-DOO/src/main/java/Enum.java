@@ -1,7 +1,7 @@
 public enum Enum {
     COCA(1,500),
     SPRITE(2,1000),
-    FANTA(76,700),
+    FANTA(3,700),
     SNICKERS(4,400),
     SUPER8(5,100);
 
@@ -12,10 +12,10 @@ public enum Enum {
         this.id = id;
         this.valor = valor;
     }
-    public int getid(){
+    public int getId(){
         return id;
     }
-        public int getvalor(){
+        public int getValor(){
         return valor;
     }
 }

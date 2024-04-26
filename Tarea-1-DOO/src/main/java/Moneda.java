@@ -1,4 +1,4 @@
-abstract class Moneda implements Comparable<Moneda>{
+abstract class Moneda implements Comparable<Enum>{
     public Moneda(){
 
     }
@@ -10,7 +10,7 @@ abstract class Moneda implements Comparable<Moneda>{
     public abstract int getValor();
 
     @Override
-    public int compareTo(Moneda otraMoneda){
-        return Integer.compare(this.getValor(), otraMoneda.getValor());
+    public int compareTo(Enum Producto){
+        return Integer.compare(this.getValor(), Producto.getValor());
     }
 }

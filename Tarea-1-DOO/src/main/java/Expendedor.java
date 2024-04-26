@@ -5,7 +5,6 @@ class Expendedor{
     private Deposito<Producto> snickers;
     private Deposito<Producto> super8;
     private Deposito<Moneda> monVu;
-    public int precio;
     public Expendedor(int numProductos){
         monVu = new Deposito<>();
 
@@ -48,22 +47,22 @@ class Expendedor{
             throw new PagoIncorrectoException("Pago incorrecto: No se ingresó ninguna moneda");
         }
 
-        if (!(type == Enum.COCA.getid()|| type == Enum.SPRITE.getid()|| type == Enum.FANTA.getid()|| type == Enum.SNICKERS.getid()|| type == Enum.SUPER8.getid())){
+        if (!(type == Enum.COCA.getId()|| type == Enum.SPRITE.getId()|| type == Enum.FANTA.getId()|| type == Enum.SNICKERS.getId()|| type == Enum.SUPER8.getId())){
             throw new NoHayProductoException("No existe el producto solicitado");
             }
 
         int j = 0;
         for (int i = 0; i < Enum.values().length; i++){
-            if (type == Enum.values()[i].getid())
+            if (type == Enum.values()[i].getId())
                 j = i;
             }
 
         switch (Enum.values()[j]) {
             case COCA:
-                if (m.getValor() >= Enum.COCA.getvalor()) {
+                if (m.compareTo(Enum.COCA) == 1 || m.compareTo(Enum.COCA) == 0) {
                     p = coca.getProducto();
                     if (p != null)
-                        vuelto = m.getValor() - precio;
+                        vuelto = m.getValor() - Enum.COCA.getValor();
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
@@ -81,10 +80,10 @@ class Expendedor{
                 }
 
             case SPRITE:
-                if (m.getValor() >= Enum.SPRITE.getvalor()) {
+                if (m.compareTo(Enum.SPRITE) == 1 || m.compareTo(Enum.SPRITE) == 0) {
                     p = sprite.getProducto();
                     if (p != null)
-                        vuelto = m.getValor() - precio;
+                        vuelto = m.getValor() - Enum.SPRITE.getValor();
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
@@ -102,10 +101,10 @@ class Expendedor{
                 }
 
             case FANTA:
-                if (m.getValor() >= Enum.FANTA.getvalor()) {
+                if (m.compareTo(Enum.FANTA) == 1 || m.compareTo(Enum.FANTA) == 0) {
                     p = fanta.getProducto();
                     if (p != null)
-                        vuelto = m.getValor() - precio;
+                        vuelto = m.getValor() - Enum.FANTA.getValor();
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
@@ -123,10 +122,10 @@ class Expendedor{
                 }
 
             case SNICKERS:
-                if (m.getValor() >= Enum.SNICKERS.getvalor()) {
+                if (m.compareTo(Enum.SNICKERS) == 1 || m.compareTo(Enum.SNICKERS) == 0) {
                     p = snickers.getProducto();
                     if (p != null)
-                        vuelto = m.getValor() - precio;
+                        vuelto = m.getValor() - Enum.SNICKERS.getValor();
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {
@@ -144,10 +143,10 @@ class Expendedor{
                 }
 
             case SUPER8:
-                if (m.getValor() >= Enum.SUPER8.getvalor()) {
+                if (m.compareTo(Enum.SUPER8) == 1 || m.compareTo(Enum.SUPER8) == 0) {
                     p = super8.getProducto();
                     if (p != null)
-                        vuelto = m.getValor() - precio;
+                        vuelto = m.getValor() - Enum.SUPER8.getValor();
                     else
                         vuelto = m.getValor();
                     while (vuelto > 0) {

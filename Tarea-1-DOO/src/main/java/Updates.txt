@@ -1,4 +1,2 @@
--Deposito cambiado a genérico
--Se redujeron addMoneda y addProducto a un nuevo método addList, para así generalizar.
-- Se añadió un archivo de enumeraciones con relación a los productos y se modificó comprarProducto y Expendedor para
-que funcione acorde a los cambios.
+- Corregido error en Expendedor
+- Cambiado CompareTo de Moneda a Moneda --> Moneda a Enum
