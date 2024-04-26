@@ -48,13 +48,17 @@ class Expendedor{
             throw new PagoIncorrectoException("Pago incorrecto: No se ingresó ninguna moneda");
         }
 
-        for (int i = 0; i < Enum.values().length; i++){
-            if (!(type == Enum.COCA.getid()|| type == Enum.SPRITE.getid()|| type == Enum.FANTA.getid()|| type == Enum.SNICKERS.getid()|| type == Enum.SUPER8.getid())){
-                throw new NoHayProductoException("No existe el producto solicitado");
+        if (!(type == Enum.COCA.getid()|| type == Enum.SPRITE.getid()|| type == Enum.FANTA.getid()|| type == Enum.SNICKERS.getid()|| type == Enum.SUPER8.getid())){
+            throw new NoHayProductoException("No existe el producto solicitado");
             }
-        }
 
-        switch (Enum.values()[Enum.values().length - 1]) {
+        int j = 0;
+        for (int i = 0; i < Enum.values().length; i++){
+            if (type == Enum.values()[i].getid())
+                j = i;
+            }
+
+        switch (Enum.values()[j]) {
             case COCA:
                 if (m.getValor() >= Enum.COCA.getvalor()) {
                     p = coca.getProducto();
