@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         // NoHayProductoException
+        /*
         try {
             Expendedor exp = new Expendedor(7);
             Moneda m = new Moneda500();
@@ -10,9 +11,10 @@ public class Main {
         catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
             System.out.println("Error: " + e.getMessage());
         }
-
+         */
 
         // PagoIncorrectoException
+        /*
         try {
             Expendedor exp = new Expendedor(7);
             Comprador c = new Comprador(null,4,exp);
@@ -21,9 +23,10 @@ public class Main {
         catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
             System.out.println("Error: " + e.getMessage());
         }
-
+       */
 
         // PagoInsuficienteException
+        /*
         try {
             Expendedor exp = new Expendedor(7);
             Moneda m = new Moneda100();
@@ -45,5 +48,11 @@ public class Main {
             System.out.println("Error: " + err.getMessage());
         }
 
+
+         */
+
+        Moneda m1 = new Moneda500();
+        Moneda m2 = new Moneda500();
+        System.out.println(m1.compareTo(m2));
     }
 }
