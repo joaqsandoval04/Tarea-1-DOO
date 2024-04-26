@@ -1,12 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        // NoHayProductoException
+        Expendedor exp = new Expendedor(7);
+        Moneda m = new Moneda500();
+        Comprador c;
 
+        // NoHayProductoException
         try {
-            Expendedor exp = new Expendedor(7);
-            Moneda m = new Moneda1500();
-            Comprador c = new Comprador(m, 5, exp);
-            System.out.println(c.queConsumiste() + ", " + c.cuantoVuelto());
+            c = new Comprador(m, 77, exp);
+            System.out.println("Consumiste: "+ c.queConsumiste() + ". Se te dió $" + c.cuantoVuelto() + " de vuelto.");
         }
         catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
             System.out.println("Error: " + e.getMessage());
@@ -14,11 +15,9 @@ public class Main {
 
 
         // PagoIncorrectoException
-
         try {
-            Expendedor exp = new Expendedor(7);
-            Comprador c = new Comprador(null,4,exp);
-            System.out.println(c.queConsumiste()+", "+c.cuantoVuelto());
+            c = new Comprador(null,4,exp);
+            System.out.println("Consumiste: "+ c.queConsumiste() + ". Se te dió $" + c.cuantoVuelto() + " de vuelto.");
         }
         catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
             System.out.println("Error: " + e.getMessage());
@@ -26,26 +25,59 @@ public class Main {
 
 
         // PagoInsuficienteException
-
         try {
-            Expendedor exp = new Expendedor(7);
-            Moneda m = new Moneda100();
-            Comprador c = new Comprador(m,3,exp);
-            System.out.println(c.queConsumiste()+", "+c.cuantoVuelto());
+            m = new Moneda100();
+            c = new Comprador(m,40,exp);
+            System.out.println("Consumiste: "+ c.queConsumiste() + ". Se te dió $" + c.cuantoVuelto() + " de vuelto.");
         }
         catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
             System.out.println("Error: " + e.getMessage());
         }
 
-        Moneda m = new Moneda1000();
-        Expendedor exp = new Expendedor(5);
-        try
-        {
-            Comprador com = new Comprador(m, 4, exp);
-            System.out.println(com.queConsumiste());
+
+        try {
+            m = new Moneda500();
+            c = new Comprador(m, 1, exp);
+            System.out.println("Consumiste: "+ c.queConsumiste() + ". Se te dió $" + c.cuantoVuelto() + " de vuelto.");
         }
-        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException err){
-            System.out.println("Error: " + err.getMessage());
+        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try {
+            m = new Moneda1500();
+            c = new Comprador(m, 2, exp);
+            System.out.println("Consumiste: "+ c.queConsumiste() + ". Se te dió $" + c.cuantoVuelto() + " de vuelto.");
+        }
+        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try {
+            m = new Moneda1000();
+            c = new Comprador(m, 40, exp);
+            System.out.println("Consumiste: "+ c.queConsumiste() + ". Se te dió $" + c.cuantoVuelto() + " de vuelto.");
+        }
+        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try {
+            m = new Moneda1000();
+            c = new Comprador(m, 74, exp);
+            System.out.println("Consumiste: "+ c.queConsumiste() + ". Se te dió $" + c.cuantoVuelto() + " de vuelto.");
+        }
+        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try {
+            m = new Moneda100();
+            c = new Comprador(m, 5, exp);
+            System.out.println("Consumiste: "+ c.queConsumiste() + ". Se te dió $" + c.cuantoVuelto() + " de vuelto.");
+        }
+        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
