@@ -1,0 +1,83 @@
+Index: Tarea-1-DOO/src/main/java/Enum.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public enum Enum {\r\n    COCA(1,500),\r\n    SPRITE(2,1000),\r\n    FANTA(76,700),\r\n    SNICKERS(4,400),\r\n    SUPER8(5,100);\r\n\r\n    private final int id;\r\n    private final int valor;\r\n\r\n    Enum(int id, int valor) {\r\n        this.id = id;\r\n        this.valor = valor;\r\n    }\r\n    public int getid(){\r\n        return id;\r\n    }\r\n        public int getvalor(){\r\n        return valor;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Tarea-1-DOO/src/main/java/Enum.java b/Tarea-1-DOO/src/main/java/Enum.java
+--- a/Tarea-1-DOO/src/main/java/Enum.java	
++++ b/Tarea-1-DOO/src/main/java/Enum.java	
+@@ -1,7 +1,7 @@
+ public enum Enum {
+     COCA(1,500),
+     SPRITE(2,1000),
+-    FANTA(76,700),
++    FANTA(3,700),
+     SNICKERS(4,400),
+     SUPER8(5,100);
+ 
+@@ -12,10 +12,10 @@
+         this.id = id;
+         this.valor = valor;
+     }
+-    public int getid(){
++    public int getId(){
+         return id;
+     }
+-        public int getvalor(){
++        public int getValor(){
+         return valor;
+     }
+ }
+Index: Tarea-1-DOO/src/main/java/Moneda.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>abstract class Moneda implements Comparable<Moneda>{\r\n    public Moneda(){\r\n\r\n    }\r\n\r\n    public Moneda getSerie(){\r\n        return this;\r\n    }\r\n\r\n    public abstract int getValor();\r\n\r\n    @Override\r\n    public int compareTo(Moneda otraMoneda){\r\n        return Integer.compare(this.getValor(), otraMoneda.getValor());\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Tarea-1-DOO/src/main/java/Moneda.java b/Tarea-1-DOO/src/main/java/Moneda.java
+--- a/Tarea-1-DOO/src/main/java/Moneda.java	
++++ b/Tarea-1-DOO/src/main/java/Moneda.java	
+@@ -1,4 +1,4 @@
+-abstract class Moneda implements Comparable<Moneda>{
++abstract class Moneda implements Comparable<Enum>{
+     public Moneda(){
+ 
+     }
+@@ -10,7 +10,7 @@
+     public abstract int getValor();
+ 
+     @Override
+-    public int compareTo(Moneda otraMoneda){
+-        return Integer.compare(this.getValor(), otraMoneda.getValor());
++    public int compareTo(Enum precioProducto){
++        return Integer.compare(this.getValor(), precioProducto.getValor());
+     }
+ }
+\ No newline at end of file
+Index: Tarea-1-DOO/src/main/java/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Main {\r\n    public static void main(String[] args) {\r\n        // NoHayProductoException\r\n        /*\r\n        try {\r\n            Expendedor exp = new Expendedor(7);\r\n            Moneda m = new Moneda500();\r\n            Comprador c = new Comprador(m, 77, exp);\r\n            System.out.println(c.queConsumiste() + \", \" + c.cuantoVuelto());\r\n        }\r\n        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {\r\n            System.out.println(\"Error: \" + e.getMessage());\r\n        }\r\n         */\r\n\r\n        // PagoIncorrectoException\r\n        /*\r\n        try {\r\n            Expendedor exp = new Expendedor(7);\r\n            Comprador c = new Comprador(null,4,exp);\r\n            System.out.println(c.queConsumiste()+\", \"+c.cuantoVuelto());\r\n        }\r\n        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {\r\n            System.out.println(\"Error: \" + e.getMessage());\r\n        }\r\n       */\r\n\r\n        // PagoInsuficienteException\r\n        /*\r\n        try {\r\n            Expendedor exp = new Expendedor(7);\r\n            Moneda m = new Moneda100();\r\n            Comprador c = new Comprador(m,3,exp);\r\n            System.out.println(c.queConsumiste()+\", \"+c.cuantoVuelto());\r\n        }\r\n        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException e) {\r\n            System.out.println(\"Error: \" + e.getMessage());\r\n        }\r\n\r\n        Moneda m = new Moneda1000();\r\n        Expendedor exp = new Expendedor(5);\r\n        try\r\n        {\r\n            Comprador com = new Comprador(m, 4, exp);\r\n            System.out.println(com.queConsumiste());\r\n        }\r\n        catch (NoHayProductoException | PagoIncorrectoException | PagoInsuficienteException err){\r\n            System.out.println(\"Error: \" + err.getMessage());\r\n        }\r\n\r\n\r\n         */\r\n\r\n        Moneda m1 = new Moneda500();\r\n        Moneda m2 = new Moneda500();\r\n        System.out.println(m1.compareTo(m2));\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Tarea-1-DOO/src/main/java/Main.java b/Tarea-1-DOO/src/main/java/Main.java
+--- a/Tarea-1-DOO/src/main/java/Main.java	
++++ b/Tarea-1-DOO/src/main/java/Main.java	
+@@ -51,8 +51,9 @@
+ 
+          */
+ 
+-        Moneda m1 = new Moneda500();
+-        Moneda m2 = new Moneda500();
+-        System.out.println(m1.compareTo(m2));
++        for(Enum valores : Enum.values())
++        {
++            System.out.println(valores + " " + valores.ordinal());
++        }
+     }
+ }
+\ No newline at end of file
