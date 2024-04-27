@@ -1,10 +1,56 @@
-class Expendedor{
+/**
+ * La clase expendedor representa el objeto que nos entregará los productos y el vuelto
+ * @author Joaquin Sandoval
+ * @author Daniel Aburto
+ */
+
+public class Expendedor{
+    /**
+     * Deposito que almacenará el producto CocaCola
+     * @see Deposito
+     * @see CocaCola
+     */
     private Deposito<Producto> coca;
+
+    /**
+     * Deposito que almacenará el producto Sprite
+     * @see Deposito
+     * @see Sprite
+     */
     private Deposito<Producto> sprite;
+
+    /**
+     * Deposito que almacenará el producto Fanta
+     * @see Deposito
+     * @see Fanta
+     */
     private Deposito<Producto> fanta;
+
+    /**
+     * Deposito que almacenará el producto Snickers
+     * @see Deposito
+     * @see Snickers
+     */
     private Deposito<Producto> snickers;
+
+    /**
+     * Deposito que almacenará el producto Super8
+     * @see Deposito
+     * @see Super8
+     */
     private Deposito<Producto> super8;
+
+    /**
+     * Deposito que almacenará las monedas del vuelto, para luego entregárselas al momento.
+     * @see Deposito
+     * @see Moneda
+     */
     private Deposito<Moneda> monVu;
+
+    /**
+     * Constructor que crea los depósitos para cada producto, además del depósito de monedas para el vuelto.
+     * @param numProductos Valor entero que indica la cantidad de productos que se almacenarán en el depósito
+     */
     public Expendedor(int numProductos){
         monVu = new Deposito<>();
 
@@ -38,6 +84,17 @@ class Expendedor{
             super8.addList(p);
         }
     }
+
+    /**
+     *
+     * @param m Es la moneda con la cual compraremos el producto
+     * @param type Es un entero que nos indica el producto que queremos comprar
+     * @return Retorna el producto que se compró, siempre y cuando el valor de la moneda sea suficiente
+     * @see Enum
+     * @throws NoHayProductoException Excepción para cuando el depósito no tiene el producto deseado
+     * @throws PagoIncorrectoException Excepción para cuando no se está entregando ninguna moneda
+     * @throws PagoInsuficienteException Excepción para cuando el valor de la moneda no es suficiente
+     */
     public Producto comprarProducto(Moneda m, int type) throws NoHayProductoException,PagoIncorrectoException,PagoInsuficienteException {
         Producto p;
 
@@ -49,13 +106,13 @@ class Expendedor{
 
         if (!(type == Enum.COCA.getId()|| type == Enum.SPRITE.getId()|| type == Enum.FANTA.getId()|| type == Enum.SNICKERS.getId()|| type == Enum.SUPER8.getId())){
             throw new NoHayProductoException("No existe el producto solicitado. Se le devolverá su moneda de $"+m.getValor());
-            }
+        }
 
         int j = 0;
         for (int i = 0; i < Enum.values().length; i++){
             if (type == Enum.values()[i].getId())
                 j = i;
-            }
+        }
 
         switch (Enum.values()[j]) {
             case COCA:
@@ -70,7 +127,7 @@ class Expendedor{
                         vuelto -= 100;
                     }
                     return p;
-                } else {                   
+                } else {
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto. Se le devolverá su moneda de $"+ m.getValor());
                 }
 
@@ -86,7 +143,7 @@ class Expendedor{
                         vuelto -= 100;
                     }
                     return p;
-                } else {                   
+                } else {
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto. Se le devolverá su moneda de $"+ m.getValor());
                 }
 
@@ -102,7 +159,7 @@ class Expendedor{
                         vuelto -= 100;
                     }
                     return p;
-                } else {                   
+                } else {
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto. Se le devolverá su moneda de $"+ m.getValor());
                 }
 
@@ -118,7 +175,7 @@ class Expendedor{
                         vuelto -= 100;
                     }
                     return p;
-                } else {                   
+                } else {
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto. Se le devolverá su moneda de $"+ m.getValor());
                 }
 
@@ -134,7 +191,7 @@ class Expendedor{
                         vuelto -= 100;
                     }
                     return p;
-                } else {                   
+                } else {
                     throw new PagoInsuficienteException("Pago insuficiente: El valor pagado es menor que el precio del producto. Se le devolverá su moneda de $"+ m.getValor());
                 }
 
@@ -147,6 +204,11 @@ class Expendedor{
                 throw new NoHayProductoException("No existe el producto solicitado. Se le devolverá su moneda de $"+m.getValor());
         }
     }
+
+    /**
+     * Devuelve el vuelto en monedas de 100
+     * @return Saca una moneda de 100 del depósito de monedas
+     */
     public Moneda getVuelto(){
         return monVu.getMoneda();
     }
